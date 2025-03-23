@@ -3,4 +3,9 @@ name = 'botw-autosplitter-client'
 title-id = 0x01007EF00011E000
 
 [build]
-sources = ['src']
+sources = ['src', 'lib/botw-symbols/src']
+includes = ['lib/botw-symbols/include']
+ldscripts = ['lib/botw-symbols/ld/ld160.ld']
+
+[build.flags]
+c = ['-DBOTW_VERSION=160']
