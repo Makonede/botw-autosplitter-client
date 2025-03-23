@@ -1,0 +1,6 @@
+[module]
+name = 'botw-autosplitter-client'
+title-id = 0x01007EF00011E000
+
+[build]
+sources = ['src']
