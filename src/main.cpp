@@ -1,8 +1,6 @@
-#include <megaton/prelude.h>
 #include <megaton/hook.h>
 
-#include <KingSystem/ActorSystem/actAiAction.h>
-
+#include "split_timer.hpp"
 #include "utility.hpp"
 
 static ksys::act::ai::Action** action_pointer = nullptr;
@@ -23,7 +21,11 @@ struct hook_inline_(find_action) {
 
 [[noreturn]] auto main_thread([[maybe_unused]] auto* unused) noexcept {
     while (!action_pointer) yield();
-    while (true);
+    auto* split_timer = new SplitTimer(*dynamic_cast<SplitTimer*>(
+        *action_pointer
+    ));
+    *action_pointer = split_timer;
+    while (true) yield();
 }
 
 extern "C" void megaton_main() noexcept {
