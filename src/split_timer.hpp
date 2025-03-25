@@ -1,15 +1,10 @@
 #pragma once
 
-#include <Game/AI/Action/actionDummyAction.h>
+#include <KingSystem/ActorSystem/actionDummyAction.h>
 
-class SplitTimer : public uking::action::DummyAction {
-    SEAD_RTTI_OVERRIDE(SplitTimer, uking::action::DummyAction)
+class SplitTimer : public ksys::act::ai::DummyAction {
+    SEAD_RTTI_OVERRIDE(SplitTimer, ksys::act::ai::DummyAction)
 
 public:
     void enter_(ksys::act::ai::InlineParamPack* params) override;
-
-protected:
-    bool* hook{};
-    int* hook_address{};
-    int* delay_frames{};
 };
