@@ -7,13 +7,13 @@
 SplitTimer::SplitTimer(const InitArg& arg) : ksys::act::ai::DummyAction(arg) {}
 
 void SplitTimer::enter_(ksys::act::ai::InlineParamPack* params) {
-    bool hook = params->getParam(params->findIndex(
+    const bool hook = params->getParam(params->findIndex(
         "Hook", ksys::AIDefParamType::Bool
     )).b;
-    uintptr_t hook_address = params->getParam(params->findIndex(
+    const uintptr_t hook_address = params->getParam(params->findIndex(
         "HookAddress", ksys::AIDefParamType::Int
     )).i;
-    u32 delay_frames = params->getParam(params->findIndex(
+    const u32 delay_frames = params->getParam(params->findIndex(
         "DelayFrames", ksys::AIDefParamType::Int
     )).u;
 
