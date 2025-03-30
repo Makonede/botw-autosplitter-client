@@ -23,6 +23,6 @@ inline auto start_thread(void (*func)(void*), T* const arg = nullptr) noexcept {
     nn::os::StartThread(thread.release());
 }
 
-inline auto yield(u64 time = 100'000'000) noexcept {
+inline auto yield(const u64 time = 100'000'000) noexcept {
     nn::os::SleepThread(nn::TimeSpan::FromNanoSeconds(time));
 }
