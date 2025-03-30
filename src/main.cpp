@@ -22,12 +22,14 @@ struct hook_inline_(find_action) {
 [[noreturn]] auto main_thread([[maybe_unused]] auto* unused) noexcept {
     while (!action_pointer) yield();
     const auto* dummy = *action_pointer;
-    auto* split_timer = new SplitTimer({
-        .actor = dummy->getActor(),
-        .def_idx = dummy->getDefinitionIdx(),
-        .root_idx = -1,
-    });
-    *action_pointer = split_timer;
+    auto split_timer = std::make_unique<SplitTimer>(
+        ksys::act::ai::ActionBase::InitArg{
+            .actor = dummy->getActor(),
+            .def_idx = dummy->getDefinitionIdx(),
+            .root_idx = -1,
+        }
+    );
+    *action_pointer = split_timer.get();
     while (true) yield();
 }
 
