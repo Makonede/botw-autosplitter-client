@@ -3,7 +3,7 @@
 #include "split_timer.hpp"
 #include "utility.hpp"
 
-static const ksys::act::ai::DummyAction** action_pointer = nullptr;
+static const ksys::act::ai::Action** action_pointer = nullptr;
 
 struct hook_inline_(find_action) {
     target_offset_(0x1597cd8)
@@ -14,7 +14,7 @@ struct hook_inline_(find_action) {
         // w21 is the index of the class in mClasses
         if (!action_pointer && ctx->w<0>() == 0x25e063fe /* SplitTimer */)
             action_pointer = reinterpret_cast<
-                const ksys::act::ai::DummyAction**
+                const ksys::act::ai::Action**
             >(ctx->x<22>()) + ctx->w<21>();
     }
 };
