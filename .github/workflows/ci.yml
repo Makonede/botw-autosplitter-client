@@ -54,4 +54,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: botw-autosplitter-client
-          path: target/megaton/none/out
+          path: ${{ github.workspace }}/target/megaton/none/out
